@@ -72,7 +72,7 @@ FROM tblproducts p
 # CASE WHEN
 SELECT
 	*,
-	CASE WHEN p.status = 'Paid' THEN 1 ELSE 0 END as status
+	CASE WHEN p.status = 'Paid' THEN 1 ELSE 0 END as status_paid
 FROM tblproducts p
 ```
 
@@ -94,6 +94,8 @@ FROM
 (SELECT 
 	p.name,
 	COUNT(p.id) AS total_produk
-FROM tblproducts p) AS mytable
+FROM tblproducts p
+GROUP BY p.name
+) AS mytable
 WHERE total_produk > 50
 ```
